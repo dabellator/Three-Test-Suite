@@ -46,7 +46,7 @@
 		var targetFPS = 50;			//highest fps before adding objects
 		var varyFPS = targetFPS / 10;		//allowed range of FPS
 		var lowestFPS = targetFPS - varyFPS;	//lowest FPS before taking out objects
-		var startVal = 1000;			//starting object number
+		var startVal = 3000;			//starting object number
 		var removeNum = startVal;		//mesh array position, for removing objects
 		var container, stats;
 		var camera, scene, renderer;
@@ -97,7 +97,7 @@
 			materials = [material1, material2, material3, material4];
 
 			geometry = new THREE.CubeGeometry( 200, 200, 200 );
-			geometry2 = new THREE.CubeGeometry( 200, 400, 200 );
+			//geometry2 = new THREE.CubeGeometry( 10, 10, 10 );
 
 			for(var i = 0; i < meshes.length; i++)
 			{
@@ -115,23 +115,22 @@
 
 				//randomize the positions and initial rotation for each object
 				meshes[i].rotation.x += Math.floor(Math.random()*2)
-				meshes[i].position.x += Math.floor(Math.random()*500);
-				meshes[i].position.x *= (Math.floor(Math.random()*3)-1);
+				meshes[i].position.x = -700 + Math.random() * 1400;
+				//meshes[i].position.x *= (Math.floor(Math.random()*3)-1);
 
 				meshes[i].rotation.y += Math.floor(Math.random()*2)
-				meshes[i].position.y += Math.floor(Math.random()*500);
-				meshes[i].position.y *= (Math.floor(Math.random()*3)-1);
+				meshes[i].position.y = -700 + Math.random() * 1400;
+				//meshes[i].position.y *= (Math.floor(Math.random()*3)-1);
 
 				meshes[i].rotation.z += Math.floor(Math.random()*2)
-				meshes[i].position.z += Math.floor(Math.random()*500);
-				meshes[i].position.z *= (Math.floor(Math.random()*3)-1);
+				meshes[i].position.z = -700 + Math.random() * 1400;
+				//meshes[i].position.z *= (Math.floor(Math.random()*3)-1);
 			}
 
 			for(var i = 0; i < startVal; i++)
 			{
 				scene.add( meshes[i] );
 			}
-			console.log(materials);
 			// create a point light
 			var pointLight = new THREE.PointLight( 0xFFFFFF );
 
