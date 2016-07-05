@@ -57,6 +57,10 @@
 		var waitFrames = 0;			// wait time between adding/removing objects
 		var waitTime = 1;			// amount of frames to wait
 		var materials;
+		var TargetFPS = document.getElementById('FPSTEXT_ID');
+		var NumBoxes = document.getElementById('NUMBOXES_ID');
+		var NumFaces = document.getElementById('NUMFACES_ID');
+		var Opacity = document.getElementById('OPACITY');
 
 		// Check that browser supports WebGL, else exit nicely
 		if (Detector.webgl) {
@@ -125,6 +129,8 @@
 				meshes[i].rotation.z += Math.floor(Math.random()*2)
 				meshes[i].position.z = -700 + Math.random() * 1400;
 				//meshes[i].position.z *= (Math.floor(Math.random()*3)-1);
+
+				meshes[i].material.opacity = 0;
 			}
 
 			for(var i = 0; i < startVal; i++)
@@ -217,11 +223,6 @@
 
 		function setupTextBox()
 		{
-			var TargetFPS = document.getElementById('FPSTEXT_ID');
-			var NumBoxes = document.getElementById('NUMBOXES_ID');
-			var NumFaces = document.getElementById('NUMFACES_ID');
-			var Opacity = document.getElementById('OPACITY');
-
 			// text positioning
 			TargetFPS.style.position = 'absolute';
 			TargetFPS.style.left = '5px';
@@ -243,9 +244,6 @@
 
 		function updateTextBox()
 		{
-			var NumBoxes = document.getElementById('NUMBOXES_ID');
-			var NumFaces = document.getElementById('NUMFACES_ID');
-
 			NumBoxes.innerHTML = "Number of boxes: " +removeNum;
 			NumFaces.innerHTML = "Number of faces: " +(removeNum * 6);
 		}
